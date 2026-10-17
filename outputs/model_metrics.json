@@ -1,0 +1,186 @@
+{
+  "project_note": "Educational prototype trained on synthetic data only; not a validated HR decision tool.",
+  "dataset": "data\\processed\\employee_performance_clean.csv",
+  "rows": 2000,
+  "feature_columns": [
+    "department",
+    "job_level",
+    "education",
+    "experience_years",
+    "manager_tenure_years",
+    "projects_count",
+    "avg_task_delay_days",
+    "on_time_delivery_rate",
+    "bug_count",
+    "code_review_score",
+    "story_points_completed",
+    "billable_hours_ratio",
+    "training_hours",
+    "certifications_count",
+    "internal_hackathons_participated",
+    "peer_feedback_score",
+    "previous_manager_score",
+    "kudos_count",
+    "promotions_in_2y",
+    "salary_percentile_band"
+  ],
+  "excluded_columns": [
+    "avg_login_hours",
+    "employee_id",
+    "perf_band_next",
+    "review_cycle",
+    "sick_days",
+    "unplanned_absences"
+  ],
+  "split": {
+    "method": "GroupShuffleSplit",
+    "test_size": 0.2,
+    "random_state": 42,
+    "train_rows": 1600,
+    "test_rows": 400,
+    "train_unique_employees": 800,
+    "test_unique_employees": 200,
+    "overlapping_employee_ids": 0,
+    "train_target_counts": {
+      "Medium": 586,
+      "High": 544,
+      "Low": 470
+    },
+    "test_target_counts": {
+      "Medium": 157,
+      "High": 127,
+      "Low": 116
+    }
+  },
+  "versions": {
+    "python": "3.13.16",
+    "pandas": "3.0.6",
+    "numpy": "2.5.3",
+    "scikit_learn": "1.9.1",
+    "joblib": "1.6.0"
+  },
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.6275,
+      "macro_f1": 0.6364496564133588,
+      "labels": [
+        "High",
+        "Low",
+        "Medium"
+      ],
+      "classification_report": {
+        "High": {
+          "precision": 0.6583333333333333,
+          "recall": 0.6220472440944882,
+          "f1-score": 0.6396761133603239,
+          "support": 127.0
+        },
+        "Low": {
+          "precision": 0.711864406779661,
+          "recall": 0.7241379310344828,
+          "f1-score": 0.717948717948718,
+          "support": 116.0
+        },
+        "Medium": {
+          "precision": 0.5432098765432098,
+          "recall": 0.5605095541401274,
+          "f1-score": 0.5517241379310345,
+          "support": 157.0
+        },
+        "accuracy": 0.6275,
+        "macro avg": {
+          "precision": 0.6378025388854014,
+          "recall": 0.6355649097563661,
+          "f1-score": 0.6364496564133588,
+          "support": 400.0
+        },
+        "weighted avg": {
+          "precision": 0.6286713878426449,
+          "recall": 0.6275,
+          "f1-score": 0.6278540183349621,
+          "support": 400.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          79,
+          3,
+          45
+        ],
+        [
+          3,
+          84,
+          29
+        ],
+        [
+          38,
+          31,
+          88
+        ]
+      ],
+      "warnings": [],
+      "artifact": "models\\logistic_regression_pipeline.joblib"
+    },
+    "random_forest": {
+      "accuracy": 0.6,
+      "macro_f1": 0.6074283618838074,
+      "labels": [
+        "High",
+        "Low",
+        "Medium"
+      ],
+      "classification_report": {
+        "High": {
+          "precision": 0.64,
+          "recall": 0.6299212598425197,
+          "f1-score": 0.6349206349206349,
+          "support": 127.0
+        },
+        "Low": {
+          "precision": 0.6511627906976745,
+          "recall": 0.7241379310344828,
+          "f1-score": 0.6857142857142857,
+          "support": 116.0
+        },
+        "Medium": {
+          "precision": 0.5205479452054794,
+          "recall": 0.4840764331210191,
+          "f1-score": 0.5016501650165016,
+          "support": 157.0
+        },
+        "accuracy": 0.6,
+        "macro avg": {
+          "precision": 0.6039035786343846,
+          "recall": 0.6127118746660072,
+          "f1-score": 0.6074283618838074,
+          "support": 400.0
+        },
+        "weighted avg": {
+          "precision": 0.5963522777954764,
+          "recall": 0.6,
+          "f1-score": 0.5973421342134213,
+          "support": 400.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          80,
+          5,
+          42
+        ],
+        [
+          4,
+          84,
+          28
+        ],
+        [
+          41,
+          40,
+          76
+        ]
+      ],
+      "warnings": [],
+      "artifact": "models\\random_forest_pipeline.joblib"
+    }
+  }
+}

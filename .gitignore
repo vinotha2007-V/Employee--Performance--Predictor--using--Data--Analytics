@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Environment and secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+
+# Model artifacts (keep the models/ directory)
+models/*.pkl
+models/*.joblib
+models/*.bin
+
+# Generated figures and temp files (keep directory placeholders)
+outputs/figures/*.png
+outputs/figures/*.jpg
+outputs/*.tmp
+*.log
+*.tmp
+
+# Do not ignore data/raw/employee_performance_synthetic.csv
+# Keep the Phase 3 cleaned table; ignore other processed extracts
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/employee_performance_clean.csv
